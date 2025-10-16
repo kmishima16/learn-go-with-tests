@@ -11,6 +11,14 @@ func TestHello(t *testing.T) {
 			t.Errorf("got %q want %q", got, want)
 		}
 	})
+	t.Run("挨拶の言語を指定できる（フランス語）", func(t *testing.T) {
+		got := Hello("Fou", "French")
+		want := "Bonjour, Fou"
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 	t.Run("挨拶の対象（名前）を指定できる", func(t *testing.T) {
 		got := Hello("Chris", "")
 		want := "Hello, Chris"

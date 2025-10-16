@@ -10,6 +10,8 @@ func Hello(name string, language string) string {
 	switch language {
 	case "Spanish":
 		return "Hola, " + name
+	case "French":
+		return "Bonjour, " + name
 	default:
 		return "Hello, " + name
 	}
