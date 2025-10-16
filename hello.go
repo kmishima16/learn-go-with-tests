@@ -1,12 +1,17 @@
 package main
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	return "Hello, " + name
+	switch language {
+	case "Japanese":
+		return "こんにちは、" + name
+	default:
+		return "Hello, " + name
+	}
 }
 
 func main() {
-	println(Hello("World"))
+	println(Hello("World", ""))
 }
