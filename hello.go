@@ -9,6 +9,8 @@ func Greet(name string, language string) string {
 	switch language {
 	case "French":
 		return "Bonjour, " + name
+	case "Spanish":
+		return "Hola, " + name
 	default:
 		return "Hello, " + name
 	}
