@@ -2,13 +2,19 @@ package main
 
 import "fmt"
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	return "Hello, " + name
+
+	switch language {
+	case "Spanish":
+		return "Hola, " + name
+	default:
+		return "Hello, " + name
+	}
 }
 
 func main() {
-	fmt.Println(Hello("World"))
+	fmt.Println(Hello("World", ""))
 }
