@@ -2,9 +2,9 @@ package main
 
 import "testing"
 
-func TestHello(t *testing.T) {
-	got := Greet()
-	want := "Hello, World"
+func TestGreet(t *testing.T) {
+	got := Greet("Chris")
+	want := "Hello, Chris"
 
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
