@@ -2,46 +2,43 @@ package main
 
 import "testing"
 
-func TestHello(t *testing.T) {
-	t.Run("挨拶の言語を指定できる（スペイン語）", func(t *testing.T) {
-		got := Hello("Elodie", "Spanish")
-		want := "Hola, Elodie"
 
+
+func TestHello(t *testing.T) {
+	assertMessage := func(t *testing.T, got, want string) {
+		t.Helper()
 		if got != want {
 			t.Errorf("got %q want %q", got, want)
 		}
+	}
+	t.Run("挨拶の言語を指定できる（フランス語）", func(t *testing.T) {
+		got := Hello("Fou", "French")
+		want := "Bonjour, Fou"
+
+		assertMessage(t, got, want)
 	})
 	t.Run("挨拶の言語を指定できる（フランス語）", func(t *testing.T) {
 		got := Hello("Fou", "French")
 		want := "Bonjour, Fou"
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertMessage(t, got, want)
 	})
 	t.Run("挨拶の対象（名前）を指定できる", func(t *testing.T) {
 		got := Hello("Chris", "")
 		want := "Hello, Chris"
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertMessage(t, got, want)
 	})
 	t.Run("名前が空の場合、デフォルトの挨拶を返す", func(t *testing.T) {
-		got := Hello("", "")
+		got := Hello("", "English")
 		want := "Hello, World"
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertMessage(t, got, want)
 	})
-	t.Run("says hello to the world", func(t *testing.T) {
-		got := Hello("World", "")
-		want := "Hello, World"
+	t.Run("言語が空の場合、英語を返す", func(t *testing.T) {
+		got := Hello("test", "")
+		want := "Hello, test"
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertMessage(t, got, want)
 	})
-
 }
