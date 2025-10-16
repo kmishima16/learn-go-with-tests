@@ -22,4 +22,11 @@ func TestHello(t *testing.T) {
 
 		assertMessage(t, got, want)
 	})
+
+	t.Run("空文字の場合はデフォルトのあいさつを返す", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World"
+
+		assertMessage(t, got, want)
+	})
 }
