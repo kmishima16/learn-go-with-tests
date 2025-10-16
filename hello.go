@@ -1,14 +1,24 @@
 package main
 
+const japanesePrefix = "こんにちは、"
+const englishPrefix = "Hello, "
+const defaultName = "World"
+
 func Hello(name string, language string) string {
 	if name == "" {
-		name = "World"
+		name = defaultName
 	}
+	
+	prefix := getGreetingPrefix(language)
+	return prefix + name
+}
+
+func getGreetingPrefix(language string) string {
 	switch language {
 	case "Japanese":
-		return "こんにちは、" + name
+		return japanesePrefix
 	default:
-		return "Hello, " + name
+		return englishPrefix
 	}
 }
 
