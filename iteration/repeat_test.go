@@ -4,11 +4,17 @@ import "testing"
 
 func TestRepeat(t *testing.T) {
 	t.Run("5回繰り返す", func(t *testing.T) {
-		got := Repeat("a", 5)
+		got := Repeat("a")
 		want := "aaaaa"
 
 		if got != want {
 			t.Errorf("got %q want %q", got, want)
 		}
 	})
+}
+
+func BenchmarkRepeat(b *testing.B) {
+	for b.Loop() {
+		Repeat("a")
+	}
 }

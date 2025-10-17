@@ -1,8 +1,10 @@
 package iteration
 
-func Repeat(character string, count int) string {
+const repeatCount = 5
+
+func Repeat(character string) string {
 	var result string
-	for i := 0; i < count; i++ {
+	for i := 0; i < repeatCount; i++ {
 		result += character
 	}
 	return result
