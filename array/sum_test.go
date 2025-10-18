@@ -1,6 +1,37 @@
 package array
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+func TestSumAll(t *testing.T) {
+
+	checkSum := func(t *testing.T, got, want []int) {
+		t.Helper()
+		for !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	}
+
+	t.Run("複数の配列の合計を計算する", func(t *testing.T) {
+		numbers1 := [3]int{1, 2, 3}
+		numbers2 := [2]int{4, 5}
+		got := SumAll(numbers1[:], numbers2[:])
+		want := []int{6, 9}
+
+		checkSum(t, got, want)
+	})
+
+	t.Run("空の配列を含む場合", func(t *testing.T) {
+		numbers1 := [3]int{1, 2, 3}
+		numbers2 := [0]int{}
+		got := SumAll(numbers1[:], numbers2[:])
+		want := []int{6, 0}
+
+		checkSum(t, got, want)
+	})
+}
 
 func TestSum(t *testing.T) {
 	t.Run("配列の合計を計算する", func(t *testing.T) {
