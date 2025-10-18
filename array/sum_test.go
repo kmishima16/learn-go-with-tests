@@ -5,15 +5,27 @@ import (
 	"testing"
 )
 func TestSumAllTails(t *testing.T) {
-	t.Run("複数のスライスの最後の要素以外の合計を計算する", func(t *testing.T) {
-		
-		got := SumAllTails([]int{1, 2}, []int{3, 4})
-		want := []int{2, 4}
 
+	checkSums := func(t testing.TB, got, want []int) {
+		t.Helper()
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %v want %v", got, want)
 		}
+	}
+	t.Run("複数のスライスの最初の要素以降の合計を計算する", func(t *testing.T) {
+		
+		got := SumAllTails([]int{1, 2}, []int{3, 4, 5})
+		want := []int{2, 9}
 
+		checkSums(t, got, want)
+	})
+
+	t.Run("空のスライスが含まれる場合", func(t *testing.T) {
+		
+		got := SumAllTails([]int{}, []int{3, 4, 5})
+		want := []int{0, 9}
+
+		checkSums(t, got, want)
 	})
 }
 
