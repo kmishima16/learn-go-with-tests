@@ -5,6 +5,34 @@ import (
 	"testing"
 )
 
+func TestSumAllTails(t *testing.T) {
+
+	checkSum := func(t *testing.T, got, want []int) {
+		t.Helper()
+		for !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	}
+
+	t.Run("複数の配列の末尾以外の合計を計算する", func(t *testing.T) {
+		numbers1 := [4]int{1, 2, 3, 4}
+		numbers2 := [3]int{0, 9, 8}
+		got := SumAllTails(numbers1[:], numbers2[:])
+		want := []int{9, 17}
+
+		checkSum(t, got, want)
+	})
+
+	t.Run("空の配列を含む場合", func(t *testing.T) {
+		numbers1 := [4]int{1, 2, 3, 4}
+		numbers2 := [0]int{}
+		got := SumAllTails(numbers1[:], numbers2[:])
+		want := []int{9, 0}
+
+		checkSum(t, got, want)
+	})
+}
+
 func TestSumAll(t *testing.T) {
 
 	checkSum := func(t *testing.T, got, want []int) {
